@@ -1,8 +1,12 @@
 import graphinformer as gi
 import numpy as np
+import bz2
 from torch.utils.data import DataLoader
 
 def loaders(data_file, folding_file, batch_size, num_workers=2, add_adj = False):
+    if data_file.endswith(".bz2"):
+        data_file = bz2.open(data_file, "r")
+
     mlr     = gi.MolDataset.from_npy(data_file)
     folding = np.load(folding_file, allow_pickle = True).item()
     

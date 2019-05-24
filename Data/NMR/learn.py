@@ -19,6 +19,7 @@ parser.add_argument('--hidden_size', type=int, default=192, help='hidden size')
 parser.add_argument('--num_layers', type=int, default=2, help='Number of layers')
 parser.add_argument('--epochs', type=int, default=100, help='number of epochs to train for')
 parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
+parser.add_argument('--data_file', type=str, default="./nmr.npy.bz2", help="data npy file")
 parser.add_argument('--folding', type=str, default="./nmr_folds_rep0.npy", help="folding npy file")
 parser.add_argument('--no_bar', action='store_true', help='disable tqdm progress bar')
 parser.add_argument('--hidden_dropout', type=float, default=0.0,
@@ -76,7 +77,7 @@ def main(args):
     args.run_folder = f"runs_rep{args.fold}"
 
     loader_tr, loader_va, loader_te = nmr_loader.loaders(
-            data_file    = "./nmr.npy",
+            data_file    = args.data_file,
             folding_file = args.folding,
             batch_size   = args.batch_size,
     )

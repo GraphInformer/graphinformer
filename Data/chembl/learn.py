@@ -12,7 +12,7 @@ from tensorboardX import SummaryWriter
 import argparse
 
 parser = argparse.ArgumentParser(description='ChEMBL prediction.')
-parser.add_argument('-d', '--data_file', help='Data file', type=str, default="./chembl80_data.npy")
+parser.add_argument('-d', '--data_file', help='Data file', type=str, default="./chembl80_data.npy.bz2")
 parser.add_argument('-f', '--folding_file', help='Folding file', type=str, default="./chembl80_folds_rep0.npy")
 parser.add_argument('-r', '--head_radius', nargs='+', help='Head radius', type=int, default=[2, 2, 2, 2, 2, 2, 2, 2])
 parser.add_argument('--init_norm', help='Initial weight for LayerNorm', type=float, default=0.01)
